@@ -10,7 +10,7 @@ while True:
         second_roll = random.randint(1,6)
         print(f'({first_roll}, {second_roll})')
     elif user_choice == 'n':
-        print('Thanks for playing')
+        print('Thanks for playing!')
         break
     else:
         print('Invalid Choice')
