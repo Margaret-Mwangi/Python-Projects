@@ -18,13 +18,9 @@ while True:
             print("Too high!")
         elif player_guess < generated_number:
             print("Too Low!")
-        elif player_guess == generated_number:
+        else :
             print("Congratulations!, you guessed the number")
             break
             
     except ValueError:
         print("Enter a valid number")
-
-
-
-
