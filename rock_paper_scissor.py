@@ -51,4 +51,7 @@ def play_game():
         if play_more == "n":
             break
 
-play_game()
+if __name__ == "__main__":
+    print("script has started")
+    play_game()
+    print("Game has ended, thanks for playing! Bye")
