@@ -8,8 +8,12 @@
 
 import random
 
-option_values = ("r", "p", "s")
-emojis = {"r": "🗿" , "s": "✂" , "p" : "📃"}
+ROCK = "r"
+PAPER = "P"
+SCISSORS = "s"
+
+emojis = {ROCK: "🗿" , SCISSORS: "✂" , PAPER : "📃"}
+option_values = tuple(emojis.keys())
 
 def get_player_choice():
     while True:
@@ -25,9 +29,9 @@ def display_choices(player_choice, computer_choice):
 
 def determine_winner(player_choice, computer_choice):
     if ( 
-        (computer_choice == "p" and player_choice == "s") or 
-        (computer_choice == "s" and player_choice == "r") or 
-        (computer_choice == "r" and player_choice == "p") ):
+        (computer_choice == PAPER and player_choice == SCISSORS) or 
+        (computer_choice == SCISSORS and player_choice == ROCK) or 
+        (computer_choice == ROCK and player_choice == PAPER) ):
         print("You win!")
         
     elif computer_choice == player_choice:
