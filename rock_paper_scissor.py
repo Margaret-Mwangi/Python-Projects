@@ -11,19 +11,19 @@ import random
 option_values = ("r", "p", "s")
 emojis = {"r": "🗿" , "s": "✂" , "p" : "📃"}
 
-while True:
-    
-    player_choice = input("Rock, Paper, Scissors? (r/p/s): ").lower()
-    play_more = ""
-    if player_choice not in option_values:
-        print("Invalid Choice")
-        continue
-    
-    computer_choice = random.choice(option_values)
+def get_player_choice():
+    while True:
+        player_choice = input("Rock, Paper, Scissors? (r/p/s): ").lower()
+        if player_choice in option_values:
+            return player_choice
+        else:
+            print("Invalid Choice")
 
+def display_choices(player_choice, computer_choice):
     print(f"You chose {emojis[player_choice]}")
     print(f"Computer chose {emojis[computer_choice]}")
 
+def determine_winner(player_choice, computer_choice):
     if ( 
         (computer_choice == "p" and player_choice == "s") or 
         (computer_choice == "s" and player_choice == "r") or 
@@ -35,9 +35,20 @@ while True:
        
     else:
         print("You lose")
+
+def play_game(): 
+    while True:
+        print(">>> play_game() function is now running <<<")
+        player_choice = get_player_choice()
         
-    
-    play_more = input("Continue? (y/n): ")
-    if play_more == "n":
-        break
-        
+        computer_choice = random.choice(option_values)
+
+        display_choices(player_choice, computer_choice)
+
+        determine_winner(player_choice, computer_choice)
+            
+        play_more = input("Continue? (y/n): ")
+        if play_more == "n":
+            break
+
+play_game()
