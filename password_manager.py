@@ -1,18 +1,34 @@
-master_password = input("What is the master password?: ")
+from cryptography.fernet import Fernet
+
+"""
+def write_key():
+    key = Fernet.generate_key()
+    with open("key.key", "wb") as key_file:
+        key_file.write(key) """
+
+def load_key():
+    with open("key.key", "rb") as file:
+        key = file.read()
+        return key
+
+
+key = load_key()
+fer = Fernet(key)
+
 
 def view():
     with open("passwords.txt", "r") as f:
         for line in f.readlines():
             data = line.rstrip()
             user, password = data.split("|")
-            print(f"Username: {user} , Password: {password}")
+            print("Username:" ,user, "Password:" ,fer.decrypt(password.encode()).decode())
 
 def add():
     username = input("Enter the username: ")
     passw = input("Enter the password for this user: ")
 
     with open("passwords.txt", "a") as f:
-        f.write(username +  "|" + passw + "\n")
+        f.write(username +  "|" + fer.encrypt(passw.encode()).decode() + "\n")
 
 while True:
     mode = input("Would you like to view or add a password(view/add), type q to exit?: ")
